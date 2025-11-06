@@ -50,12 +50,12 @@ def create_model_info_dict():
 
     #run_type = 'forecast' # this is the switch to go from forecasting to hindcasting...
 
-    pfm_dir = '/scratch/PFM_Simulations/' # this stays fixed for Grids and executables
+    pfm_dir = '/glade/work/akg/PHM_Simulations' # this stays fixed for Grids and executables
                                          # both forecasting and hindcasting use the same ones.
     if run_type == 'forecast':
-       pfm_root_dir = '/scratch/PFM_Simulations/'       
+       pfm_root_dir = '/glade/work/akg/PFM_Simulations'       
     else:
-       pfm_root_dir = '/scratch/PHM_Simulations/'       
+       pfm_root_dir = '/glade/work/akg/PHM_Simulations'       
    
     PFM = dict()
     if run_type == 'hindcast': # note hycom with tides starts on 2024-10-10 1200...
@@ -76,11 +76,11 @@ def create_model_info_dict():
         # we loop through levels_to_run
         PFM['levels_to_run'] = ['LV1','LV2','LV3']
         ocn_model = 'hycom_hind_wtide' # _wtide indicates using the new (>20241010) hycom
-        PFM['atm_hind_dir'] = '/dataSIO/PHM_Simulations/raw_download/nam_grb2'
+        PFM['atm_hind_dir'] = '/glade/work/akg/forcings/raw_download/nam_grb2'
         atm_model = 'nam_analysis'
         PFM['atm_dt_hr'] = 3
-        PFM['server'] = 'swell'
-        PFM['qtj_obs_fname_full'] = pfm_root_dir + 'river_data/IBWC_Qtrje_custom.csv'
+        PFM['server'] = 'derecho'
+        PFM['qtj_obs_fname_full'] = pfm_root_dir + '/glade/work/akg/forcings/raw_download/q_obs_data/qtj_raw_20200101_20250901.csv'
     else:
         # hycom_new is the only forecast option
         ocn_model = 'hycom_new' # worked with 'hycom' but that is now (9/13/24) depricated      
